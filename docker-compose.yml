@@ -1,0 +1,25 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: pg
+    environment:
+      POSTGRES_USER: lab3
+      POSTGRES_PASSWORD: lab3
+      POSTGRES_DB: lab3
+    ports: ["5432:5432"]
+    shm_size: 1g
+    command: ["postgres", "-c", "shared_buffers=1GB", "-c", "maintenance_work_mem=512MB",
+              "-c", "work_mem=64MB", "-c", "effective_cache_size=2GB"]
+    volumes: [pgdata:/var/lib/postgresql/data]
+
+  solr:
+    image: solr:10
+    container_name: solr
+    environment:
+      SOLR_HEAP: 2g
+    ports: ["8983:8983"]
+    volumes: [solrdata:/var/solr]
+
+volumes:
+  pgdata:
+  solrdata:
