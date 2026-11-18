@@ -1,0 +1,2002 @@
+{
+  "overlay": {
+    "responseHeader": {
+      "status": 0,
+      "QTime": 0
+    },
+    "overlay": {
+      "znodeVersion": 1,
+      "userProps": {
+        "update.autoCreateFields": "false"
+      },
+      "props": {
+        "query": {
+          "queryResultCache": {
+            "size": 0
+          },
+          "filterCache": {
+            "size": "0"
+          }
+        }
+      }
+    }
+  },
+  "schema": {
+    "responseHeader": {
+      "status": 0,
+      "QTime": 1
+    },
+    "schema": {
+      "name": "default-config",
+      "version": 1.7,
+      "uniqueKey": "id",
+      "fieldTypes": [
+        {
+          "name": "_nest_path_",
+          "class": "solr.NestPathField",
+          "stored": false,
+          "uninvertible": false,
+          "docValues": true,
+          "multiValued": false
+        },
+        {
+          "name": "ancestor_path",
+          "class": "solr.TextField",
+          "indexAnalyzer": {
+            "tokenizer": {
+              "name": "keyword"
+            }
+          },
+          "queryAnalyzer": {
+            "tokenizer": {
+              "name": "pathHierarchy",
+              "delimiter": "/"
+            }
+          }
+        },
+        {
+          "name": "binary",
+          "class": "solr.BinaryField"
+        },
+        {
+          "name": "boolean",
+          "class": "solr.BoolField",
+          "sortMissingLast": true
+        },
+        {
+          "name": "booleans",
+          "class": "solr.BoolField",
+          "sortMissingLast": true,
+          "multiValued": true
+        },
+        {
+          "name": "delimited_payloads_float",
+          "class": "solr.TextField",
+          "indexed": true,
+          "stored": false,
+          "analyzer": {
+            "tokenizer": {
+              "name": "whitespace"
+            },
+            "filters": [
+              {
+                "name": "delimitedPayload",
+                "encoder": "float"
+              }
+            ]
+          }
+        },
+        {
+          "name": "delimited_payloads_int",
+          "class": "solr.TextField",
+          "indexed": true,
+          "stored": false,
+          "analyzer": {
+            "tokenizer": {
+              "name": "whitespace"
+            },
+            "filters": [
+              {
+                "name": "delimitedPayload",
+                "encoder": "integer"
+              }
+            ]
+          }
+        },
+        {
+          "name": "delimited_payloads_string",
+          "class": "solr.TextField",
+          "indexed": true,
+          "stored": false,
+          "analyzer": {
+            "tokenizer": {
+              "name": "whitespace"
+            },
+            "filters": [
+              {
+                "name": "delimitedPayload",
+                "encoder": "identity"
+              }
+            ]
+          }
+        },
+        {
+          "name": "descendent_path",
+          "class": "solr.TextField",
+          "indexAnalyzer": {
+            "tokenizer": {
+              "name": "pathHierarchy",
+              "delimiter": "/"
+            }
+          },
+          "queryAnalyzer": {
+            "tokenizer": {
+              "name": "keyword"
+            }
+          }
+        },
+        {
+          "name": "ignored",
+          "class": "solr.StrField",
+          "indexed": false,
+          "stored": false,
+          "docValues": false,
+          "multiValued": true
+        },
+        {
+          "name": "location",
+          "class": "solr.LatLonPointSpatialField"
+        },
+        {
+          "name": "location_rpt",
+          "class": "solr.SpatialRecursivePrefixTreeFieldType",
+          "geo": "true",
+          "maxDistErr": "0.001",
+          "distErrPct": "0.025",
+          "distanceUnits": "kilometers"
+        },
+        {
+          "name": "lowercase",
+          "class": "solr.TextField",
+          "positionIncrementGap": "100",
+          "analyzer": {
+            "tokenizer": {
+              "name": "keyword"
+            },
+            "filters": [
+              {
+                "name": "lowercase"
+              }
+            ]
+          }
+        },
+        {
+          "name": "pdate",
+          "class": "solr.DatePointField"
+        },
+        {
+          "name": "pdates",
+          "class": "solr.DatePointField",
+          "multiValued": true
+        },
+        {
+          "name": "pdouble",
+          "class": "solr.DoublePointField"
+        },
+        {
+          "name": "pdoubles",
+          "class": "solr.DoublePointField",
+          "multiValued": true
+        },
+        {
+          "name": "pfloat",
+          "class": "solr.FloatPointField"
+        },
+        {
+          "name": "pfloats",
+          "class": "solr.FloatPointField",
+          "multiValued": true
+        },
+        {
+          "name": "phonetic_en",
+          "class": "solr.TextField",
+          "indexed": true,
+          "stored": false,
+          "analyzer": {
+            "tokenizer": {
+              "name": "standard"
+            },
+            "filters": [
+              {
+                "name": "doubleMetaphone",
+                "inject": "false"
+              }
+            ]
+          }
+        },
+        {
+          "name": "pint",
+          "class": "solr.IntPointField"
+        },
+        {
+          "name": "pints",
+          "class": "solr.IntPointField",
+          "multiValued": true
+        },
+        {
+          "name": "plong",
+          "class": "solr.LongPointField"
+        },
+        {
+          "name": "plongs",
+          "class": "solr.LongPointField",
+          "multiValued": true
+        },
+        {
+          "name": "point",
+          "class": "solr.PointType",
+          "dimension": "2",
+          "subFieldSuffix": "_d"
+        },
+        {
+          "name": "random",
+          "class": "solr.RandomSortField",
+          "indexed": true
+        },
+        {
+          "name": "rank",
+          "class": "solr.RankField"
+        },
+        {
+          "name": "string",
+          "class": "solr.StrField",
+          "sortMissingLast": true
+        },
+        {
+          "name": "strings",
+          "class": "solr.StrField",
+          "sortMissingLast": true,
+          "multiValued": true
+        },
+        {
+          "name": "text_ar",
+          "class": "solr.TextField",
+          "positionIncrementGap": "100",
+          "analyzer": {
+            "tokenizer": {
+              "name": "standard"
+            },
+            "filters": [
+              {
+                "name": "lowercase"
+              },
+              {
+                "name": "stop",
+                "words": "lang/stopwords_ar.txt",
+                "ignoreCase": "true"
+              },
+              {
+                "name": "arabicNormalization"
+              },
+              {
+                "name": "arabicStem"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_bg",
+          "class": "solr.TextField",
+          "positionIncrementGap": "100",
+          "analyzer": {
+            "tokenizer": {
+              "name": "standard"
+            },
+            "filters": [
+              {
+                "name": "lowercase"
+              },
+              {
+                "name": "stop",
+                "words": "lang/stopwords_bg.txt",
+                "ignoreCase": "true"
+              },
+              {
+                "name": "bulgarianStem"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_ca",
+          "class": "solr.TextField",
+          "positionIncrementGap": "100",
+          "analyzer": {
+            "tokenizer": {
+              "name": "standard"
+            },
+            "filters": [
+              {
+                "name": "elision",
+                "articles": "lang/contractions_ca.txt",
+                "ignoreCase": "true"
+              },
+              {
+                "name": "lowercase"
+              },
+              {
+                "name": "stop",
+                "words": "lang/stopwords_ca.txt",
+                "ignoreCase": "true"
+              },
+              {
+                "name": "snowballPorter",
+                "language": "Catalan"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_cjk",
+          "class": "solr.TextField",
+          "positionIncrementGap": "100",
+          "analyzer": {
+            "tokenizer": {
+              "name": "standard"
+            },
+            "filters": [
+              {
+                "name": "CJKWidth"
+              },
+              {
+                "name": "lowercase"
+              },
+              {
+                "name": "CJKBigram"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_cz",
+          "class": "solr.TextField",
+          "positionIncrementGap": "100",
+          "analyzer": {
+            "tokenizer": {
+              "name": "standard"
+            },
+            "filters": [
+              {
+                "name": "lowercase"
+              },
+              {
+                "name": "stop",
+                "words": "lang/stopwords_cz.txt",
+                "ignoreCase": "true"
+              },
+              {
+                "name": "czechStem"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_da",
+          "class": "solr.TextField",
+          "positionIncrementGap": "100",
+          "analyzer": {
+            "tokenizer": {
+              "name": "standard"
+            },
+            "filters": [
+              {
+                "name": "lowercase"
+              },
+              {
+                "name": "stop",
+                "words": "lang/stopwords_da.txt",
+                "ignoreCase": "true",
+                "format": "snowball"
+              },
+              {
+                "name": "snowballPorter",
+                "language": "Danish"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_de",
+          "class": "solr.TextField",
+          "positionIncrementGap": "100",
+          "analyzer": {
+            "tokenizer": {
+              "name": "standard"
+            },
+            "filters": [
+              {
+                "name": "lowercase"
+              },
+              {
+                "name": "stop",
+                "words": "lang/stopwords_de.txt",
+                "ignoreCase": "true",
+                "format": "snowball"
+              },
+              {
+                "name": "germanNormalization"
+              },
+              {
+                "name": "germanLightStem"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_el",
+          "class": "solr.TextField",
+          "positionIncrementGap": "100",
+          "analyzer": {
+            "tokenizer": {
+              "name": "standard"
+            },
+            "filters": [
+              {
+                "name": "greekLowercase"
+              },
+              {
+                "name": "stop",
+                "words": "lang/stopwords_el.txt",
+                "ignoreCase": "false"
+              },
+              {
+                "name": "greekStem"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_en",
+          "class": "solr.TextField",
+          "positionIncrementGap": "100",
+          "indexAnalyzer": {
+            "tokenizer": {
+              "name": "standard"
+            },
+            "filters": [
+              {
+                "name": "stop",
+                "words": "lang/stopwords_en.txt",
+                "ignoreCase": "true"
+              },
+              {
+                "name": "lowercase"
+              },
+              {
+                "name": "englishPossessive"
+              },
+              {
+                "name": "keywordMarker",
+                "protected": "protwords.txt"
+              },
+              {
+                "name": "porterStem"
+              }
+            ]
+          },
+          "queryAnalyzer": {
+            "tokenizer": {
+              "name": "standard"
+            },
+            "filters": [
+              {
+                "expand": "true",
+                "name": "synonymGraph",
+                "synonyms": "synonyms.txt",
+                "ignoreCase": "true"
+              },
+              {
+                "name": "stop",
+                "words": "lang/stopwords_en.txt",
+                "ignoreCase": "true"
+              },
+              {
+                "name": "lowercase"
+              },
+              {
+                "name": "englishPossessive"
+              },
+              {
+                "name": "keywordMarker",
+                "protected": "protwords.txt"
+              },
+              {
+                "name": "porterStem"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_en_splitting",
+          "class": "solr.TextField",
+          "positionIncrementGap": "100",
+          "autoGeneratePhraseQueries": "true",
+          "indexAnalyzer": {
+            "tokenizer": {
+              "name": "whitespace"
+            },
+            "filters": [
+              {
+                "name": "stop",
+                "words": "lang/stopwords_en.txt",
+                "ignoreCase": "true"
+              },
+              {
+                "catenateWords": "1",
+                "catenateNumbers": "1",
+                "splitOnCaseChange": "1",
+                "name": "wordDelimiterGraph",
+                "catenateAll": "0",
+                "generateWordParts": "1",
+                "generateNumberParts": "1"
+              },
+              {
+                "name": "lowercase"
+              },
+              {
+                "name": "keywordMarker",
+                "protected": "protwords.txt"
+              },
+              {
+                "name": "porterStem"
+              },
+              {
+                "name": "flattenGraph"
+              }
+            ]
+          },
+          "queryAnalyzer": {
+            "tokenizer": {
+              "name": "whitespace"
+            },
+            "filters": [
+              {
+                "expand": "true",
+                "name": "synonymGraph",
+                "synonyms": "synonyms.txt",
+                "ignoreCase": "true"
+              },
+              {
+                "name": "stop",
+                "words": "lang/stopwords_en.txt",
+                "ignoreCase": "true"
+              },
+              {
+                "catenateWords": "0",
+                "catenateNumbers": "0",
+                "splitOnCaseChange": "1",
+                "name": "wordDelimiterGraph",
+                "catenateAll": "0",
+                "generateWordParts": "1",
+                "generateNumberParts": "1"
+              },
+              {
+                "name": "lowercase"
+              },
+              {
+                "name": "keywordMarker",
+                "protected": "protwords.txt"
+              },
+              {
+                "name": "porterStem"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_en_splitting_tight",
+          "class": "solr.TextField",
+          "positionIncrementGap": "100",
+          "autoGeneratePhraseQueries": "true",
+          "indexAnalyzer": {
+            "tokenizer": {
+              "name": "whitespace"
+            },
+            "filters": [
+              {
+                "expand": "false",
+                "name": "synonymGraph",
+                "synonyms": "synonyms.txt",
+                "ignoreCase": "true"
+              },
+              {
+                "name": "stop",
+                "words": "lang/stopwords_en.txt",
+                "ignoreCase": "true"
+              },
+              {
+                "catenateAll": "0",
+                "generateNumberParts": "0",
+                "name": "wordDelimiterGraph",
+                "catenateWords": "1",
+                "catenateNumbers": "1",
+                "generateWordParts": "0"
+              },
+              {
+                "name": "lowercase"
+              },
+              {
+                "name": "keywordMarker",
+                "protected": "protwords.txt"
+              },
+              {
+                "name": "englishMinimalStem"
+              },
+              {
+                "name": "removeDuplicates"
+              },
+              {
+                "name": "flattenGraph"
+              }
+            ]
+          },
+          "queryAnalyzer": {
+            "tokenizer": {
+              "name": "whitespace"
+            },
+            "filters": [
+              {
+                "expand": "false",
+                "name": "synonymGraph",
+                "synonyms": "synonyms.txt",
+                "ignoreCase": "true"
+              },
+              {
+                "name": "stop",
+                "words": "lang/stopwords_en.txt",
+                "ignoreCase": "true"
+              },
+              {
+                "catenateAll": "0",
+                "generateNumberParts": "0",
+                "name": "wordDelimiterGraph",
+                "catenateWords": "1",
+                "catenateNumbers": "1",
+                "generateWordParts": "0"
+              },
+              {
+                "name": "lowercase"
+              },
+              {
+                "name": "keywordMarker",
+                "protected": "protwords.txt"
+              },
+              {
+                "name": "englishMinimalStem"
+              },
+              {
+                "name": "removeDuplicates"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_es",
+          "class": "solr.TextField",
+          "positionIncrementGap": "100",
+          "analyzer": {
+            "tokenizer": {
+              "name": "standard"
+            },
+            "filters": [
+              {
+                "name": "lowercase"
+              },
+              {
+                "name": "stop",
+                "words": "lang/stopwords_es.txt",
+                "ignoreCase": "true",
+                "format": "snowball"
+              },
+              {
+                "name": "spanishLightStem"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_et",
+          "class": "solr.TextField",
+          "positionIncrementGap": "100",
+          "analyzer": {
+            "tokenizer": {
+              "name": "standard"
+            },
+            "filters": [
+              {
+                "name": "lowercase"
+              },
+              {
+                "name": "stop",
+                "words": "lang/stopwords_et.txt",
+                "ignoreCase": "true"
+              },
+              {
+                "name": "snowballPorter",
+                "language": "Estonian"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_eu",
+          "class": "solr.TextField",
+          "positionIncrementGap": "100",
+          "analyzer": {
+            "tokenizer": {
+              "name": "standard"
+            },
+            "filters": [
+              {
+                "name": "lowercase"
+              },
+              {
+                "name": "stop",
+                "words": "lang/stopwords_eu.txt",
+                "ignoreCase": "true"
+              },
+              {
+                "name": "snowballPorter",
+                "language": "Basque"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_fa",
+          "class": "solr.TextField",
+          "positionIncrementGap": "100",
+          "analyzer": {
+            "charFilters": [
+              {
+                "name": "persian"
+              }
+            ],
+            "tokenizer": {
+              "name": "standard"
+            },
+            "filters": [
+              {
+                "name": "lowercase"
+              },
+              {
+                "name": "arabicNormalization"
+              },
+              {
+                "name": "persianNormalization"
+              },
+              {
+                "name": "stop",
+                "words": "lang/stopwords_fa.txt",
+                "ignoreCase": "true"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_fi",
+          "class": "solr.TextField",
+          "positionIncrementGap": "100",
+          "analyzer": {
+            "tokenizer": {
+              "name": "standard"
+            },
+            "filters": [
+              {
+                "name": "lowercase"
+              },
+              {
+                "name": "stop",
+                "words": "lang/stopwords_fi.txt",
+                "ignoreCase": "true",
+                "format": "snowball"
+              },
+              {
+                "name": "snowballPorter",
+                "language": "Finnish"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_fr",
+          "class": "solr.TextField",
+          "positionIncrementGap": "100",
+          "analyzer": {
+            "tokenizer": {
+              "name": "standard"
+            },
+            "filters": [
+              {
+                "name": "elision",
+                "articles": "lang/contractions_fr.txt",
+                "ignoreCase": "true"
+              },
+              {
+                "name": "lowercase"
+              },
+              {
+                "name": "stop",
+                "words": "lang/stopwords_fr.txt",
+                "ignoreCase": "true",
+                "format": "snowball"
+              },
+              {
+                "name": "frenchLightStem"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_ga",
+          "class": "solr.TextField",
+          "positionIncrementGap": "100",
+          "analyzer": {
+            "tokenizer": {
+              "name": "standard"
+            },
+            "filters": [
+              {
+                "name": "elision",
+                "articles": "lang/contractions_ga.txt",
+                "ignoreCase": "true"
+              },
+              {
+                "name": "stop",
+                "words": "lang/hyphenations_ga.txt",
+                "ignoreCase": "true"
+              },
+              {
+                "name": "irishLowercase"
+              },
+              {
+                "name": "stop",
+                "words": "lang/stopwords_ga.txt",
+                "ignoreCase": "true"
+              },
+              {
+                "name": "snowballPorter",
+                "language": "Irish"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_gen_sort",
+          "class": "solr.SortableTextField",
+          "positionIncrementGap": "100",
+          "multiValued": true,
+          "indexAnalyzer": {
+            "tokenizer": {
+              "name": "standard"
+            },
+            "filters": [
+              {
+                "name": "stop",
+                "words": "stopwords.txt",
+                "ignoreCase": "true"
+              },
+              {
+                "name": "lowercase"
+              }
+            ]
+          },
+          "queryAnalyzer": {
+            "tokenizer": {
+              "name": "standard"
+            },
+            "filters": [
+              {
+                "name": "stop",
+                "words": "stopwords.txt",
+                "ignoreCase": "true"
+              },
+              {
+                "expand": "true",
+                "name": "synonymGraph",
+                "synonyms": "synonyms.txt",
+                "ignoreCase": "true"
+              },
+              {
+                "name": "lowercase"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_general",
+          "class": "solr.TextField",
+          "positionIncrementGap": "100",
+          "multiValued": true,
+          "indexAnalyzer": {
+            "tokenizer": {
+              "name": "standard"
+            },
+            "filters": [
+              {
+                "name": "stop",
+                "words": "stopwords.txt",
+                "ignoreCase": "true"
+              },
+              {
+                "name": "lowercase"
+              }
+            ]
+          },
+          "queryAnalyzer": {
+            "tokenizer": {
+              "name": "standard"
+            },
+            "filters": [
+              {
+                "name": "stop",
+                "words": "stopwords.txt",
+                "ignoreCase": "true"
+              },
+              {
+                "expand": "true",
+                "name": "synonymGraph",
+                "synonyms": "synonyms.txt",
+                "ignoreCase": "true"
+              },
+              {
+                "name": "lowercase"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_general_rev",
+          "class": "solr.TextField",
+          "positionIncrementGap": "100",
+          "indexAnalyzer": {
+            "tokenizer": {
+              "name": "standard"
+            },
+            "filters": [
+              {
+                "name": "stop",
+                "words": "stopwords.txt",
+                "ignoreCase": "true"
+              },
+              {
+                "name": "lowercase"
+              },
+              {
+                "maxPosAsterisk": "3",
+                "withOriginal": "true",
+                "maxPosQuestion": "2",
+                "name": "reversedWildcard",
+                "maxFractionAsterisk": "0.33"
+              }
+            ]
+          },
+          "queryAnalyzer": {
+            "tokenizer": {
+              "name": "standard"
+            },
+            "filters": [
+              {
+                "expand": "true",
+                "name": "synonymGraph",
+                "synonyms": "synonyms.txt",
+                "ignoreCase": "true"
+              },
+              {
+                "name": "stop",
+                "words": "stopwords.txt",
+                "ignoreCase": "true"
+              },
+              {
+                "name": "lowercase"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_gl",
+          "class": "solr.TextField",
+          "positionIncrementGap": "100",
+          "analyzer": {
+            "tokenizer": {
+              "name": "standard"
+            },
+            "filters": [
+              {
+                "name": "lowercase"
+              },
+              {
+                "name": "stop",
+                "words": "lang/stopwords_gl.txt",
+                "ignoreCase": "true"
+              },
+              {
+                "name": "galicianStem"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_hi",
+          "class": "solr.TextField",
+          "positionIncrementGap": "100",
+          "analyzer": {
+            "tokenizer": {
+              "name": "standard"
+            },
+            "filters": [
+              {
+                "name": "lowercase"
+              },
+              {
+                "name": "indicNormalization"
+              },
+              {
+                "name": "hindiNormalization"
+              },
+              {
+                "name": "stop",
+                "words": "lang/stopwords_hi.txt",
+                "ignoreCase": "true"
+              },
+              {
+                "name": "hindiStem"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_hu",
+          "class": "solr.TextField",
+          "positionIncrementGap": "100",
+          "analyzer": {
+            "tokenizer": {
+              "name": "standard"
+            },
+            "filters": [
+              {
+                "name": "lowercase"
+              },
+              {
+                "name": "stop",
+                "words": "lang/stopwords_hu.txt",
+                "ignoreCase": "true",
+                "format": "snowball"
+              },
+              {
+                "name": "snowballPorter",
+                "language": "Hungarian"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_hy",
+          "class": "solr.TextField",
+          "positionIncrementGap": "100",
+          "analyzer": {
+            "tokenizer": {
+              "name": "standard"
+            },
+            "filters": [
+              {
+                "name": "lowercase"
+              },
+              {
+                "name": "stop",
+                "words": "lang/stopwords_hy.txt",
+                "ignoreCase": "true"
+              },
+              {
+                "name": "snowballPorter",
+                "language": "Armenian"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_id",
+          "class": "solr.TextField",
+          "positionIncrementGap": "100",
+          "analyzer": {
+            "tokenizer": {
+              "name": "standard"
+            },
+            "filters": [
+              {
+                "name": "lowercase"
+              },
+              {
+                "name": "stop",
+                "words": "lang/stopwords_id.txt",
+                "ignoreCase": "true"
+              },
+              {
+                "name": "indonesianStem",
+                "stemDerivational": "true"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_it",
+          "class": "solr.TextField",
+          "positionIncrementGap": "100",
+          "analyzer": {
+            "tokenizer": {
+              "name": "standard"
+            },
+            "filters": [
+              {
+                "name": "elision",
+                "articles": "lang/contractions_it.txt",
+                "ignoreCase": "true"
+              },
+              {
+                "name": "lowercase"
+              },
+              {
+                "name": "stop",
+                "words": "lang/stopwords_it.txt",
+                "ignoreCase": "true",
+                "format": "snowball"
+              },
+              {
+                "name": "italianLightStem"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_ja",
+          "class": "solr.TextField",
+          "positionIncrementGap": "100",
+          "autoGeneratePhraseQueries": "false",
+          "analyzer": {
+            "tokenizer": {
+              "name": "japanese",
+              "mode": "search"
+            },
+            "filters": [
+              {
+                "name": "japaneseBaseForm"
+              },
+              {
+                "name": "japanesePartOfSpeechStop",
+                "tags": "lang/stoptags_ja.txt"
+              },
+              {
+                "name": "cjkWidth"
+              },
+              {
+                "name": "stop",
+                "words": "lang/stopwords_ja.txt",
+                "ignoreCase": "true"
+              },
+              {
+                "name": "japaneseKatakanaStem",
+                "minimumLength": "4"
+              },
+              {
+                "name": "lowercase"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_ko",
+          "class": "solr.TextField",
+          "positionIncrementGap": "100",
+          "analyzer": {
+            "tokenizer": {
+              "name": "korean",
+              "outputUnknownUnigrams": "false",
+              "decompoundMode": "discard"
+            },
+            "filters": [
+              {
+                "name": "koreanPartOfSpeechStop"
+              },
+              {
+                "name": "koreanReadingForm"
+              },
+              {
+                "name": "lowercase"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_lv",
+          "class": "solr.TextField",
+          "positionIncrementGap": "100",
+          "analyzer": {
+            "tokenizer": {
+              "name": "standard"
+            },
+            "filters": [
+              {
+                "name": "lowercase"
+              },
+              {
+                "name": "stop",
+                "words": "lang/stopwords_lv.txt",
+                "ignoreCase": "true"
+              },
+              {
+                "name": "latvianStem"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_nl",
+          "class": "solr.TextField",
+          "positionIncrementGap": "100",
+          "analyzer": {
+            "tokenizer": {
+              "name": "standard"
+            },
+            "filters": [
+              {
+                "name": "lowercase"
+              },
+              {
+                "name": "stop",
+                "words": "lang/stopwords_nl.txt",
+                "ignoreCase": "true",
+                "format": "snowball"
+              },
+              {
+                "name": "stemmerOverride",
+                "dictionary": "lang/stemdict_nl.txt",
+                "ignoreCase": "false"
+              },
+              {
+                "name": "snowballPorter",
+                "language": "Dutch"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_no",
+          "class": "solr.TextField",
+          "positionIncrementGap": "100",
+          "analyzer": {
+            "tokenizer": {
+              "name": "standard"
+            },
+            "filters": [
+              {
+                "name": "lowercase"
+              },
+              {
+                "name": "stop",
+                "words": "lang/stopwords_no.txt",
+                "ignoreCase": "true",
+                "format": "snowball"
+              },
+              {
+                "name": "snowballPorter",
+                "language": "Norwegian"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_pt",
+          "class": "solr.TextField",
+          "positionIncrementGap": "100",
+          "analyzer": {
+            "tokenizer": {
+              "name": "standard"
+            },
+            "filters": [
+              {
+                "name": "lowercase"
+              },
+              {
+                "name": "stop",
+                "words": "lang/stopwords_pt.txt",
+                "ignoreCase": "true",
+                "format": "snowball"
+              },
+              {
+                "name": "portugueseLightStem"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_ro",
+          "class": "solr.TextField",
+          "positionIncrementGap": "100",
+          "analyzer": {
+            "tokenizer": {
+              "name": "standard"
+            },
+            "filters": [
+              {
+                "name": "lowercase"
+              },
+              {
+                "name": "stop",
+                "words": "lang/stopwords_ro.txt",
+                "ignoreCase": "true"
+              },
+              {
+                "name": "snowballPorter",
+                "language": "Romanian"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_ru",
+          "class": "solr.TextField",
+          "positionIncrementGap": "100",
+          "analyzer": {
+            "tokenizer": {
+              "name": "standard"
+            },
+            "filters": [
+              {
+                "name": "lowercase"
+              },
+              {
+                "name": "stop",
+                "words": "lang/stopwords_ru.txt",
+                "ignoreCase": "true",
+                "format": "snowball"
+              },
+              {
+                "name": "snowballPorter",
+                "language": "Russian"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_sv",
+          "class": "solr.TextField",
+          "positionIncrementGap": "100",
+          "analyzer": {
+            "tokenizer": {
+              "name": "standard"
+            },
+            "filters": [
+              {
+                "name": "lowercase"
+              },
+              {
+                "name": "stop",
+                "words": "lang/stopwords_sv.txt",
+                "ignoreCase": "true",
+                "format": "snowball"
+              },
+              {
+                "name": "snowballPorter",
+                "language": "Swedish"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_th",
+          "class": "solr.TextField",
+          "positionIncrementGap": "100",
+          "analyzer": {
+            "tokenizer": {
+              "name": "thai"
+            },
+            "filters": [
+              {
+                "name": "lowercase"
+              },
+              {
+                "name": "stop",
+                "words": "lang/stopwords_th.txt",
+                "ignoreCase": "true"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_tr",
+          "class": "solr.TextField",
+          "positionIncrementGap": "100",
+          "analyzer": {
+            "tokenizer": {
+              "name": "standard"
+            },
+            "filters": [
+              {
+                "name": "turkishLowercase"
+              },
+              {
+                "name": "stop",
+                "words": "lang/stopwords_tr.txt",
+                "ignoreCase": "false"
+              },
+              {
+                "name": "snowballPorter",
+                "language": "Turkish"
+              }
+            ]
+          }
+        },
+        {
+          "name": "text_ws",
+          "class": "solr.TextField",
+          "positionIncrementGap": "100",
+          "analyzer": {
+            "tokenizer": {
+              "name": "whitespace"
+            }
+          }
+        }
+      ],
+      "fields": [
+        {
+          "name": "_nest_path_",
+          "type": "_nest_path_"
+        },
+        {
+          "name": "_root_",
+          "type": "string",
+          "indexed": true,
+          "stored": false
+        },
+        {
+          "name": "_text_",
+          "type": "text_general",
+          "multiValued": true,
+          "indexed": true,
+          "stored": false
+        },
+        {
+          "name": "_version_",
+          "type": "plong",
+          "indexed": false,
+          "stored": false
+        },
+        {
+          "name": "abstract",
+          "type": "text_en",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "categories",
+          "type": "string",
+          "docValues": true,
+          "multiValued": true,
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "copy_no",
+          "type": "pint",
+          "indexed": true,
+          "docValues": true,
+          "stored": true
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "multiValued": false,
+          "indexed": true,
+          "required": true,
+          "stored": true
+        },
+        {
+          "name": "license",
+          "type": "string",
+          "indexed": true,
+          "docValues": true,
+          "stored": true
+        },
+        {
+          "name": "main_cat",
+          "type": "string",
+          "indexed": true,
+          "docValues": true,
+          "stored": true
+        },
+        {
+          "name": "n_authors",
+          "type": "pint",
+          "indexed": false,
+          "docValues": true,
+          "stored": true
+        },
+        {
+          "name": "original_id",
+          "type": "string",
+          "indexed": true,
+          "docValues": true,
+          "stored": true
+        },
+        {
+          "name": "part",
+          "type": "pint",
+          "indexed": true,
+          "docValues": false,
+          "stored": false
+        },
+        {
+          "name": "pub_date",
+          "type": "pdate",
+          "indexed": true,
+          "docValues": true,
+          "stored": true
+        },
+        {
+          "name": "sub_cat",
+          "type": "string",
+          "indexed": true,
+          "docValues": true,
+          "stored": true
+        },
+        {
+          "name": "text_all",
+          "type": "text_en",
+          "multiValued": true,
+          "indexed": true,
+          "stored": false
+        },
+        {
+          "name": "title",
+          "type": "text_en",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "year",
+          "type": "pint",
+          "indexed": true,
+          "docValues": true,
+          "stored": true
+        }
+      ],
+      "dynamicFields": [
+        {
+          "name": "*_txt_en_split_tight",
+          "type": "text_en_splitting_tight",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_descendent_path",
+          "type": "descendent_path",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_ancestor_path",
+          "type": "ancestor_path",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_txt_en_split",
+          "type": "text_en_splitting",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_txt_sort",
+          "type": "text_gen_sort",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "ignored_*",
+          "type": "ignored"
+        },
+        {
+          "name": "*_txt_rev",
+          "type": "text_general_rev",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_phon_en",
+          "type": "phonetic_en",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_s_lower",
+          "type": "lowercase",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_txt_cjk",
+          "type": "text_cjk",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "random_*",
+          "type": "random"
+        },
+        {
+          "name": "*_t_sort",
+          "type": "text_gen_sort",
+          "multiValued": false,
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_txt_en",
+          "type": "text_en",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_txt_ar",
+          "type": "text_ar",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_txt_bg",
+          "type": "text_bg",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_txt_ca",
+          "type": "text_ca",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_txt_cz",
+          "type": "text_cz",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_txt_da",
+          "type": "text_da",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_txt_de",
+          "type": "text_de",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_txt_el",
+          "type": "text_el",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_txt_es",
+          "type": "text_es",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_txt_et",
+          "type": "text_et",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_txt_eu",
+          "type": "text_eu",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_txt_fa",
+          "type": "text_fa",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_txt_fi",
+          "type": "text_fi",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_txt_fr",
+          "type": "text_fr",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_txt_ga",
+          "type": "text_ga",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_txt_gl",
+          "type": "text_gl",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_txt_hi",
+          "type": "text_hi",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_txt_hu",
+          "type": "text_hu",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_txt_hy",
+          "type": "text_hy",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_txt_id",
+          "type": "text_id",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_txt_it",
+          "type": "text_it",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_txt_ja",
+          "type": "text_ja",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_txt_ko",
+          "type": "text_ko",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_txt_lv",
+          "type": "text_lv",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_txt_nl",
+          "type": "text_nl",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_txt_no",
+          "type": "text_no",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_txt_pt",
+          "type": "text_pt",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_txt_ro",
+          "type": "text_ro",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_txt_ru",
+          "type": "text_ru",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_txt_sv",
+          "type": "text_sv",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_txt_th",
+          "type": "text_th",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_txt_tr",
+          "type": "text_tr",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_point",
+          "type": "point",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_srpt",
+          "type": "location_rpt",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "attr_*",
+          "type": "text_general",
+          "multiValued": true,
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_dts",
+          "type": "pdates",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_txt",
+          "type": "text_general",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_str",
+          "type": "strings",
+          "docValues": true,
+          "indexed": false,
+          "stored": false,
+          "useDocValuesAsStored": false
+        },
+        {
+          "name": "*_dpf",
+          "type": "delimited_payloads_float",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_dpi",
+          "type": "delimited_payloads_int",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_dps",
+          "type": "delimited_payloads_string",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_is",
+          "type": "pints",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_ss",
+          "type": "strings",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_ls",
+          "type": "plongs",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_bs",
+          "type": "booleans",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_fs",
+          "type": "pfloats",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_ds",
+          "type": "pdoubles",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_dt",
+          "type": "pdate",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_ws",
+          "type": "text_ws",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_i",
+          "type": "pint",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_s",
+          "type": "string",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_l",
+          "type": "plong",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_b",
+          "type": "boolean",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_f",
+          "type": "pfloat",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_d",
+          "type": "pdouble",
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_t",
+          "type": "text_general",
+          "multiValued": false,
+          "indexed": true,
+          "stored": true
+        },
+        {
+          "name": "*_p",
+          "type": "location",
+          "indexed": true,
+          "stored": true
+        }
+      ],
+      "copyFields": [
+        {
+          "source": "abstract",
+          "dest": "text_all"
+        },
+        {
+          "source": "title",
+          "dest": "text_all"
+        }
+      ]
+    }
+  }
+}

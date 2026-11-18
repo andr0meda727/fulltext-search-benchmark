@@ -5,7 +5,7 @@
 -- Q1: one word in any form (galaxy, galaxies)
 SELECT count(*) FROM arxiv WHERE tsv @@ to_tsquery('english', 'galaxy');
 -- Q1 with LIKE, for comparison
-SELECT count(*) FROM arxiv WHERE (title || ' ' || abstract) ILIKE '%galax%';
+SELECT count(*) FROM arxiv WHERE (title || ' ' || abstract) LIKE '%galax%';
 -- Q2: phrase "dark matter" (words next to each other, in this order), category astro-ph
 SELECT count(*) FROM arxiv WHERE tsv @@ to_tsquery('english', 'dark <-> matter') AND main_cat = 'astro-ph';
 -- Q3: neural AND (image OR speech) NOT quantum

@@ -34,7 +34,7 @@ QUERIES = [
         "solr_q": "galaxy",
         "sql_filter": "",
         "fq": None,
-        "like_where": f"{DOC} ILIKE '%galax%'",
+        "like_where": f"{DOC} LIKE '%galax%'",
     },
     {
         "key": "Q2",
@@ -43,7 +43,7 @@ QUERIES = [
         "solr_q": '"dark matter"',
         "sql_filter": "AND main_cat = 'astro-ph'",
         "fq": "main_cat:astro-ph",
-        "like_where": f"{DOC} ILIKE '%dark matter%' AND main_cat = 'astro-ph'",
+        "like_where": f"{DOC} LIKE '%dark matter%' AND main_cat = 'astro-ph'",
     },
     {
         "key": "Q3",
@@ -52,8 +52,8 @@ QUERIES = [
         "solr_q": "+neural +(image speech) -quantum",
         "sql_filter": "",
         "fq": None,
-        "like_where": (f"{DOC} ILIKE '%neural%' AND ({DOC} ILIKE '%image%' OR {DOC} ILIKE '%speech%')"
-                       f" AND {DOC} NOT ILIKE '%quantum%'"),
+        "like_where": (f"{DOC} LIKE '%neural%' AND ({DOC} LIKE '%image%' OR {DOC} LIKE '%speech%')"
+                       f" AND {DOC} NOT LIKE '%quantum%'"),
     },
 ]
 

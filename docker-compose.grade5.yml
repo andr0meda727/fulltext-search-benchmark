@@ -1,0 +1,25 @@
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: lab3
+      POSTGRES_PASSWORD: lab3
+      POSTGRES_DB: lab3
+    ports: ["15432:5432"]
+    shm_size: 256m
+    command: ["postgres", "-c", "shared_buffers=256MB", "-c", "maintenance_work_mem=128MB", "-c", "work_mem=32MB", "-c", "max_wal_size=256MB"]
+    volumes: [pgdata5:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U lab3 -d lab3"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+  solr:
+    image: solr:10
+    environment:
+      SOLR_HEAP: 1g
+    ports: ["58983:8983"]
+    volumes: [solrdata5:/var/solr]
+volumes:
+  pgdata5:
+  solrdata5:

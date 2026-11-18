@@ -1,0 +1,59 @@
+Skalowanie 50103 Q1
+http://localhost:58983/solr/grade5_arxiv/select?q=galaxy&df=text_all&rows=0
+
+Skalowanie 50103 Q2
+http://localhost:58983/solr/grade5_arxiv/select?q=%22dark+matter%22&df=text_all&rows=0&fq=main_cat%3Aastro-ph
+
+Skalowanie 50103 Q3
+http://localhost:58983/solr/grade5_arxiv/select?q=%2Bneural+%2B%28image+speech%29+-quantum&df=text_all&rows=0
+
+Skalowanie 250183 Q1
+http://localhost:58983/solr/grade5_arxiv/select?q=galaxy&df=text_all&rows=0
+
+Skalowanie 250183 Q2
+http://localhost:58983/solr/grade5_arxiv/select?q=%22dark+matter%22&df=text_all&rows=0&fq=main_cat%3Aastro-ph
+
+Skalowanie 250183 Q3
+http://localhost:58983/solr/grade5_arxiv/select?q=%2Bneural+%2B%28image+speech%29+-quantum&df=text_all&rows=0
+
+Skalowanie 500000 Q1
+http://localhost:58983/solr/grade5_arxiv/select?q=galaxy&df=text_all&rows=0
+
+Skalowanie 500000 Q2
+http://localhost:58983/solr/grade5_arxiv/select?q=%22dark+matter%22&df=text_all&rows=0&fq=main_cat%3Aastro-ph
+
+Skalowanie 500000 Q3
+http://localhost:58983/solr/grade5_arxiv/select?q=%2Bneural+%2B%28image+speech%29+-quantum&df=text_all&rows=0
+
+Facety
+http://localhost:58983/solr/grade5_arxiv/select?q=galaxy&df=text_all&rows=0&facet=true&facet.field=main_cat&facet.field=sub_cat&facet.limit=-1&facet.mincount=1&facet.sort=index&facet.range=year&facet.range.start=1990&facet.range.end=2030&facet.range.gap=5&facet.range.include=lower&facet.range.hardend=true&facet.range.method=dv
+
+Collapse all plain
+http://localhost:58983/solr/grade5_duplicates/select?q=%2A%3A%2A&df=text_all&rows=10&fl=id%2Coriginal_id%2Ccopy_no%2Ctitle&sort=original_id+asc%2Ccopy_no+asc%2Cid+asc&facet=true&facet.field=main_cat&facet.limit=-1&facet.mincount=1
+
+Collapse all collapsed
+http://localhost:58983/solr/grade5_duplicates/select?q=%2A%3A%2A&df=text_all&rows=10&fl=id%2Coriginal_id%2Ccopy_no%2Ctitle&sort=original_id+asc%2Ccopy_no+asc%2Cid+asc&facet=true&facet.field=main_cat&facet.limit=-1&facet.mincount=1&fq=%7B%21collapse+field%3Doriginal_id+sort%3D%27copy_no+asc%2Cid+asc%27%7D
+
+Collapse Q1 plain
+http://localhost:58983/solr/grade5_duplicates/select?q=galaxy&df=text_all&rows=10&fl=id%2Coriginal_id%2Ccopy_no%2Ctitle&sort=original_id+asc%2Ccopy_no+asc%2Cid+asc&facet=true&facet.field=main_cat&facet.limit=-1&facet.mincount=1
+
+Collapse Q1 collapsed
+http://localhost:58983/solr/grade5_duplicates/select?q=galaxy&df=text_all&rows=10&fl=id%2Coriginal_id%2Ccopy_no%2Ctitle&sort=original_id+asc%2Ccopy_no+asc%2Cid+asc&facet=true&facet.field=main_cat&facet.limit=-1&facet.mincount=1&fq=%7B%21collapse+field%3Doriginal_id+sort%3D%27copy_no+asc%2Cid+asc%27%7D
+
+Strona 1 offset_method
+http://localhost:58983/solr/grade5_arxiv/select?q=%2A%3A%2A&sort=year+asc%2Cid+asc&fl=id%2Cyear&rows=1000&start=0
+
+Strona 1 cursor_method
+http://localhost:58983/solr/grade5_arxiv/select?q=%2A%3A%2A&sort=year+asc%2Cid+asc&fl=id%2Cyear&rows=1000&cursorMark=%2A
+
+Strona 251 offset_method
+http://localhost:58983/solr/grade5_arxiv/select?q=%2A%3A%2A&sort=year+asc%2Cid+asc&fl=id%2Cyear&rows=1000&start=250000
+
+Strona 251 cursor_method
+http://localhost:58983/solr/grade5_arxiv/select?q=%2A%3A%2A&sort=year+asc%2Cid+asc&fl=id%2Cyear&rows=1000&cursorMark=AoJafioyNjAzLjA0Nzc0
+
+Strona 500 offset_method
+http://localhost:58983/solr/grade5_arxiv/select?q=%2A%3A%2A&sort=year+asc%2Cid+asc&fl=id%2Cyear&rows=1000&start=499000
+
+Strona 500 cursor_method
+http://localhost:58983/solr/grade5_arxiv/select?q=%2A%3A%2A&sort=year+asc%2Cid+asc&fl=id%2Cyear&rows=1000&cursorMark=AoJafioyNjEwLjMwNjcy

@@ -1,0 +1,18 @@
+# Optional Windows storage override. Use with -f docker-compose.grade5.yml
+# and -f docker-compose.grade5.storage.yml. The directory must already exist.
+services:
+  postgres:
+    volumes:
+      - type: bind
+        source: ${GRADE5_STORAGE_ROOT:-F:/Lab3Benchmark}/postgres
+        target: /var/lib/postgresql/data
+  solr:
+    volumes:
+      - type: bind
+        source: ${GRADE5_STORAGE_ROOT:-F:/Lab3Benchmark}/solr
+        target: /var/solr
+      - zkdata5:/var/solr/data/zoo_data
+volumes:
+  zkdata5:
+    external: true
+    name: lab3grade5_zkdata5

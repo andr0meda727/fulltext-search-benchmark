@@ -64,9 +64,9 @@ The Solr admin panel is at http://localhost:8983/solr. Every Solr query is saved
 
 | | PostgreSQL (`to_tsquery('english', …)`) | Solr (`df=text_all`) | LIKE |
 |---|---|---|---|
-| Q1 - one word, any form | `galaxy` | `galaxy` | `ILIKE '%galax%'` |
-| Q2 - phrase + filter | `dark <-> matter` + `main_cat='astro-ph'` | `"dark matter"` + `fq=main_cat:astro-ph` | `ILIKE '%dark matter%'` |
-| Q3 - AND/OR with negation | `neural & (image \| speech) & !quantum` | `+neural +(image speech) -quantum` | 3× `ILIKE` |
+| Q1 - one word, any form | `galaxy` | `galaxy` | `LIKE '%galax%'` |
+| Q2 - phrase + filter | `dark <-> matter` + `main_cat='astro-ph'` | `"dark matter"` + `fq=main_cat:astro-ph` | `LIKE '%dark matter%'` |
+| Q3 - AND/OR with negation | `neural & (image \| speech) & !quantum` | `+neural +(image speech) -quantum` | 3× `LIKE` |
 
 The SQL is in `sql/queries.sql`, and the scripts also print exactly what they ran.
 
@@ -121,3 +121,61 @@ without the boost, plus the average year in the top 10.
 - Facets vs GROUP BY: one Solr query with two `facet.field`s and a `facet.range` (e.g. on `year`)
   vs the matching GROUP BY queries in SQL, compare results and times.
 - Try a few more things on top of the boost, e.g. synonyms, spellcheck or "more like this".
+
+## Extended benchmarks: scaling, facets, duplicates and pagination
+
+The extension compares LIKE, PostgreSQL FTS and Solr at 10%, 50% and 100% of the
+dataset. It also compares two categorical facets and a range facet with SQL
+GROUP BY, and tests duplicate handling (`collapse`) and deep pagination
+(`start/rows` versus `cursorMark`).
+
+The benchmarks use 500,000 unique arXiv papers from a
+[Hugging Face mirror](https://huggingface.co/datasets/librarian-bots/arxiv-metadata-snapshot).
+The metadata is listed under the CC0-1.0 license. Searches run against English
+titles and abstracts; categories and publication years are used for filtering
+and aggregation. The subsets contain 50,103, 250,183 and 500,000 documents.
+Measurements include a warm-up run followed by five repetitions.
+
+### Running the benchmarks (Windows / PowerShell)
+
+Requirements: Python 3.11+, Docker Desktop with Linux containers and about 10 GB
+of free disk space. The services use ports 15432 (PostgreSQL) and 58983 (Solr).
+
+```powershell
+py -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements-grade5.txt
+.\.venv\Scripts\python.exe download_grade5.py --rows 500000
+docker compose -p lab3grade5 -f docker-compose.grade5.yml up -d
+.\.venv\Scripts\python.exe -u grade5.py all
+.\.venv\Scripts\python.exe export_results.py
+```
+
+The downloader saves the data to `data/arxiv.csv`. Set `GRADE5_CSV` to use a
+different location; gzip-compressed CSV files are also supported. For example,
+an existing local setup can use `F:\Lab3Benchmark\data\arxiv.csv.gz`, with its
+location specified in `.grade5.local.json`. To reuse prepared indexes on drive
+F:, replace the standard Compose command with:
+
+```powershell
+$env:GRADE5_STORAGE_ROOT = 'F:/Lab3Benchmark'
+docker volume create lab3grade5_zkdata5
+docker compose -p lab3grade5 -f docker-compose.grade5.yml -f docker-compose.grade5.storage.yml up -d
+```
+
+`grade5.py` loads the data and runs the experiments. To run individual stages,
+replace `all` with `scaling`, `facets`, `collapse` or `pagination`.
+The substring comparison uses the case-sensitive `LIKE` operator.
+The `scaling-like` stage reruns only the LIKE measurements on physical subsets
+of the existing full table, preserving previous FTS and Solr measurements.
+The scaling stage recreates the `grade5_arxiv` table and index. The other stages
+require the full dataset, and the duplicate test uses a separate
+`grade5_duplicates` index.
+
+### Benchmark output
+
+Raw measurements are saved to `results/grade5/`. `export_results.py` writes
+tables (`wyniki.md`), a scaling chart (`skalowanie.png` and `.csv`), SQL queries,
+Solr query URLs and a copy of the raw results (`raw/`) to `output/grade5/`.
+
+Run `python package_grade5.py` to create `output/LAB3_czesc_5_0.zip` containing
+the code and results, without the dataset.

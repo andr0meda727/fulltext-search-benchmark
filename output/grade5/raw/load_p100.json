@@ -1,0 +1,14 @@
+{
+  "max_part": 100,
+  "rows": 500000,
+  "pg_copy_s": 168.0392184999946,
+  "pg_tsv_s": 537.211822600002,
+  "pg_gin_s": 342.4468584999995,
+  "pg_total_bytes": 1759502336,
+  "solr_send_s": 426.17875910000294,
+  "solr_commit_s": 36.265075700001034,
+  "source_id_sha256": "b8462f5a917977c826dcde49b0d637ea2fc5ad9446693354883d1e880d7050d4",
+  "sorted_pg_solr_id_sha256": "9e2ca1e8954e10aafa76368abefaaca95b3b07d90c35295bbf72594148346058",
+  "ids_equal": true,
+  "resumed_import": false
+}
